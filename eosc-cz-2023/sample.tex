@@ -1,0 +1,70 @@
+% vim: syn=tex:
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme[dep=data]{eosc-v01}
+
+\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage[czech]{babel}
+
+%\usepackage{hyperref}
+
+% Specialni
+%\usepackage{cancel}
+
+\begin{document}
+
+\title{Název}
+%\subtitle{aneb Čekání na velká data}
+\author[D.A.]{David Antoš}
+\institute{CESNET}
+\date{30. 6. 2023}
+%\date[20. 9. 2016]{20. 9. 2016 \vbox to 0pt{\vskip 2mm \leavevmode\kern-8mm\includegraphics[width=0.6\textwidth]{Logolink_OP_VVV_hor_barva_cz.jpg}\raise 2.8mm\hbox{\includegraphics[width=0.2\textwidth]{cesnet-logo.pdf}}}\vss}
+
+\begin{frame}[plain]
+  \maketitle
+\end{frame}
+
+\begin{frame}{Titul}
+  \begin{itemize}
+    \item obsah
+    \item 2
+      \begin{itemize}
+        \item test
+          \begin{itemize}
+            \item kukuku
+            \item kukuku
+            \item bububu
+            \item kukuku
+          \end{itemize}
+        \item kukuku
+        \item kukuku
+        \item test
+        \item kukuku
+        \item kukuku
+        \item test
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{lastframe}{}
+  \vspace*{.35\textheight}\par % because we have "t" option for beamer
+  Napište nám
+  \par\null\par
+  info@eosc.cz\ \ \ \ \ \ \ \ \ \ \ \ \ \ www.eosc.cz
+% ugly but working
+  \iffalse
+  \vbox to \textheight{
+    \vfill
+    \hbox to \textwidth{
+    \hfill
+  \small author contact
+\kern3pt
+}
+}
+\fi
+\end{lastframe}
+
+
+\end{document}
+

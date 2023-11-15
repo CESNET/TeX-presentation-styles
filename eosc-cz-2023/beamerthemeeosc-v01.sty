@@ -1,0 +1,167 @@
+\ProvidesPackage{beamerthemeeinfra-v03}
+% s logoline msmt (verze 1 ma jinou titulku)
+
+\ProcessOptionsBeamer
+%%\usepackage{environ}
+
+%\usepackage{mdframed}
+
+%%% FONT %%%
+%\usepackage{AvenirLTPro}
+%\usefonttheme{professionalfonts}
+%% podvadim
+%\usepackage{opensans}
+%\usepackage{helvet}
+%\renewcommand\familydefault{\sfdefault}
+\usepackage[tabular]{sourcesanspro}
+
+
+% nastaveni fontu
+\AtBeginDocument{\boldmath}
+
+%zakladni barvy
+\definecolor{eoscgaylivelygreen}{RGB}{0,134,145}
+\definecolor{eoscgaymildpink}{RGB}{255,92,128}
+\definecolor{eoscgaywarmblack}{RGB}{4,3,5}
+
+\colorlet{eoscbase}{eoscgaywarmblack}
+\colorlet{eosctitle}{eoscgaylivelygreen}
+
+% obrazky na pozadi
+\setbeamertemplate{background canvas}{%
+\ifnumequal{\c@framenumber}{1}{%
+% First frame
+\includegraphics[height=\paperheight]{Prezentace-titul-eosc.pdf}
+}{%
+\includegraphics[height=\paperheight]{Prezentace-empty-eosc.pdf}
+}%
+}
+
+% opicky nahore a dole na slidu
+\useoutertheme{infolines}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{footline}{%
+	\strut\hfill
+	\vbox to 0pt
+	{
+		\vss
+		\leavevmode
+		\raggedright
+		\hsize=.94\textwidth
+		\usebeamercolor[fg]{author in head/foot}
+		\usebeamerfont{author in head/foot}
+		{\null\insertshortdate\hfill\insertshorttitle\hfill\insertframenumber{}/\inserttotalframenumber}
+		\par
+		\vskip10pt
+	}
+	\hskip2em\strut
+}
+
+
+% normalni stranka -- titul
+\defbeamertemplate*{frametitle}{eosc theme}
+{%
+	\vbox to 53pt{
+		\vfill
+		\leavevmode
+		\raise0pt
+		\hbox {%
+		%\parbox[t]{.45\paperwidth}{
+			%\flushright
+			\usebeamerfont{frametitle}{%
+		\insertframetitle}
+			\usebeamerfont{framesubtitle}{\insertframesubtitle}
+		\hspace*{-1.5cm}
+	}
+	}
+}
+
+\setbeamersize{text margin left=.5cm,text margin right=1.5cm}
+
+%velikost fontu atd
+\setbeamerfont{title}{series=\bfseries,size={\fontsize{20}{24}}}
+%\setbeamerfont{title}{series=\bfseries,size=\Large}
+\setbeamerfont{subtitle}{series=\bfseries,size=\large}
+\setbeamerfont{author}{series=\bfseries,size=\Large}
+\setbeamerfont{author last}{series=\bfseries,size=\footnotesize}
+\setbeamerfont{author in head/foot}{series=\bfseries,size=\footnotesize}
+\setbeamerfont{date}{size=\footnotesize}
+\setbeamerfont{institute}{size=\footnotesize}
+
+\setbeamerfont{author in head/foot}{size=\tiny,series=\mdseries}
+%\setbeamerfont{title in head/foot}{size=\tiny,series=\bfseries}
+%\setbeamerfont{date in head/foot}{size=\tiny,series=\bfseries}
+
+%\setbeamerfont{alerted text}{series=\bfseries}
+\setbeamerfont{frametitle}{series=\bfseries,size=\Large}
+
+%barvicky
+\setbeamercolor{title page}{fg=eosctitle}
+\setbeamercolor{frametitle}{fg=eosctitle}
+
+\setbeamercolor{alerted text}{fg=eosctitle}
+\setbeamercolor{structure}{fg=eoscbase}
+\setbeamercolor{author in head/foot}{fg=eoscbase}
+
+\setbeamercolor{enumerate item}{fg=black}
+\setbeamercolor{enumerate subitem}{fg=black}
+\setbeamercolor{enumerate subsubitem}{fg=black}
+
+\setbeamercolor{enumerate item}{fg=eoscbase}
+\setbeamercolor{itemize item}{fg=eoscbase}
+%\setbeamercolor{itemize subitem}{fg=eoscgaylivelygreen}
+%\setbeamercolor{itemize subsubitem}{fg=einfrapurple}
+%\setbeamercolor{itemize/enumerate body}{fg=eoscbase}
+%\setbeamercolor{itemize/enumerate subbody}{fg=eoscbase}
+%\setbeamercolor{itemize/enumerate subsubbody}{fg=eoscbase}
+
+%%odrazky
+\setbeamertemplate{itemize item}[circle]%{\textbf{---}}
+\setbeamertemplate{itemize subitem}[circle]%{\textbf{---}}
+\setbeamertemplate{itemize subsubitem}[circle]%{\textbf{---}}
+
+
+%prvni stranka
+\setbeamertemplate{title page}{
+\advance\leftskip0\textwidth
+\vskip40pt
+\vfill
+{\usebeamerfont{title}%\MakeUppercase
+{\inserttitle}}\par
+\par
+{\usebeamerfont{subtitle}\textcolor{eoscgaylivelygreen} \insertsubtitle}\par
+\par
+{\usebeamerfont{author} \insertauthor}\par
+%\medskip
+{\usebeamerfont{institute} \insertinstitute}\par
+%\par\noindent\rule{.5\textwidth}{1pt}
+%\medskip
+{\usebeamerfont{date} \insertdate}
+\medskip
+\par\null
+\vfill
+}
+
+\iffalse
+\newenvironment{separationframe}
+{\setbeamertemplate{background canvas}%
+{\includegraphics[height=\paperheight]{Prezentace-sep-einfra2.pdf}}%
+\setbeamertemplate{footline}{}%
+\begin{frame}
+  \usebeamercolor[einfrawhite]{title page}\usebeamerfont{title}%
+}
+{\end{frame}}
+\fi
+
+\newenvironment{lastframe}
+{\setbeamertemplate{background canvas}%
+{\includegraphics[height=\paperheight]{Prezentace-empty-eosc.pdf}}%
+\setbeamertemplate{footline}{}%
+\begin{frame}
+  \kern-3\baselineskip
+	\usebeamercolor[eoscgaylivelygreen]{title page}\usebeamerfont{title}%
+}
+{\vss\end{frame}}
+
