@@ -1,0 +1,169 @@
+\ProvidesPackage{beamerthemeeinfra-v03}
+% s logoline msmt (verze 1 ma jinou titulku)
+
+\ProcessOptionsBeamer
+%%\usepackage{environ}
+
+%\usepackage{mdframed}
+
+%%% FONT %%%
+%\usepackage{AvenirLTPro}
+%\usefonttheme{professionalfonts}
+%% podvadim
+%\usepackage{opensans}
+%\usepackage{helvet}
+%\renewcommand\familydefault{\sfdefault}
+\usepackage[tabular]{sourcesanspro}
+
+
+% nastaveni fontu
+\AtBeginDocument{\boldmath}
+
+%zakladni barvy
+\definecolor{einfragayeggplant}{RGB}{47,37,87}
+\definecolor{einfrablack}{RGB}{0,0,0}
+\definecolor{einfragayblue}{RGB}{76,217,244}
+\definecolor{einfrapurple}{RGB}{134,52,252}
+\definecolor{einfrawhite}{RGB}{255,255,255}
+
+\colorlet{einfrabase}{einfragayeggplant}
+\colorlet{einfratitle}{einfragayeggplant}
+
+% obrazky na pozadi
+\setbeamertemplate{background canvas}{%
+\ifnumequal{\c@framenumber}{1}{%
+% First frame
+\includegraphics[height=\paperheight]{Prezentace-titul-einfra2.pdf}
+}{%
+\includegraphics[height=\paperheight]{Prezentace-empty-einfra2.pdf}
+}%
+}
+
+% opicky nahore a dole na slidu
+\useoutertheme{infolines}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{footline}{%
+	\strut\hfill
+	\vbox to 0pt
+	{
+		\vss
+		\leavevmode
+		\raggedright
+		\hsize=.94\textwidth
+		\usebeamercolor[fg]{author in head/foot}
+		\usebeamerfont{author in head/foot}
+		{\null\hfill\insertframenumber{}/\inserttotalframenumber}
+		\par
+		\vskip10pt
+	}
+	\hskip2em\strut
+}
+
+
+% normalni stranka -- titul
+\defbeamertemplate*{frametitle}{einfra theme}
+{%
+	\vbox to 45pt{
+		\vfill
+		\leavevmode
+		\raise10pt
+		\hbox {%
+		%\parbox[t]{.45\paperwidth}{
+			%\flushright
+			\usebeamerfont{frametitle}{%
+		\insertframetitle}
+		%	\\\usebeamerfont{framesubtitle}{\insertframesubtitle}
+		%}
+		\hspace*{-1.5cm}
+	}
+	}
+}
+
+\setbeamersize{text margin left=1cm,text margin right=1cm}
+
+%velikost fontu atd
+\setbeamerfont{title}{series=\bfseries,size={\fontsize{16}{20}}}
+%\setbeamerfont{title}{series=\bfseries,size=\Large}
+\setbeamerfont{subtitle}{series=\bfseries,size=\large}
+\setbeamerfont{author}{series=\bfseries,size=\Large}
+\setbeamerfont{author last}{series=\bfseries,size=\footnotesize}
+\setbeamerfont{author in head/foot}{series=\bfseries,size=\footnotesize}
+\setbeamerfont{date}{size=\footnotesize}
+\setbeamerfont{institute}{size=\footnotesize}
+
+\setbeamerfont{author in head/foot}{size=\tiny,series=\bfseries}
+\setbeamerfont{title in head/foot}{size=\tiny,series=\bfseries}
+\setbeamerfont{date in head/foot}{size=\tiny,series=\bfseries}
+
+%\setbeamerfont{alerted text}{series=\bfseries}
+\setbeamerfont{frametitle}{series=\bfseries,size=\Large}
+
+%barvicky
+\setbeamercolor{title page}{fg=einfratitle}
+\setbeamercolor{frametitle}{fg=einfratitle}
+
+\setbeamercolor{alerted text}{fg=einfragayblue}
+\setbeamercolor{structure}{fg=einfrabase}
+\setbeamercolor{author in head/foot}{fg=einfrabase}
+
+\setbeamercolor{enumerate item}{fg=black}
+\setbeamercolor{enumerate subitem}{fg=black}
+\setbeamercolor{enumerate subsubitem}{fg=black}
+
+\setbeamercolor{enumerate item}{fg=einfrabase}
+\setbeamercolor{itemize item}{fg=einfrabase}
+\setbeamercolor{itemize subitem}{fg=einfragayblue}
+\setbeamercolor{itemize subsubitem}{fg=einfrapurple}
+\setbeamercolor{itemize/enumerate body}{fg=einfrabase}
+\setbeamercolor{itemize/enumerate subbody}{fg=einfrabase}
+\setbeamercolor{itemize/enumerate subsubbody}{fg=einfrabase}
+
+%odrazky
+\setbeamertemplate{itemize item}[circle]%{\textbf{---}}
+\setbeamertemplate{itemize subitem}[circle]%{\textbf{---}}
+\setbeamertemplate{itemize subsubitem}[circle]%{\textbf{---}}
+
+
+%prvni stranka
+\setbeamertemplate{title page}{
+\advance\leftskip.5\textwidth
+\vskip40pt
+\vfill\vfill
+{\usebeamerfont{title} \MakeUppercase{\inserttitle}}\par
+\medskip
+{\usebeamerfont{subtitle}\textcolor{einfragayblue} \insertsubtitle}\par
+\medskip
+{\usebeamerfont{author} \insertauthor}\par
+\medskip
+%{\usebeamerfont{institute} \insertinstitute}\par
+%\par\noindent\rule{.5\textwidth}{1pt}
+%\medskip
+{\usebeamerfont{date} \insertdate}
+\medskip
+\par\null
+\vfill
+\vfill
+}
+
+\newenvironment{separationframe}
+{\setbeamertemplate{background canvas}%
+{\includegraphics[height=\paperheight]{Prezentace-sep-einfra2.pdf}}%
+\setbeamertemplate{footline}{}%
+\begin{frame}
+  \usebeamercolor[einfrawhite]{title page}\usebeamerfont{title}%
+}
+{\end{frame}}
+
+\newenvironment{lastframe}
+{\setbeamertemplate{background canvas}%
+{\includegraphics[height=\paperheight]{Prezentace-last-einfra2.pdf}}%
+\setbeamertemplate{footline}{}%
+\begin{frame}
+  \centering
+  \kern-3\baselineskip
+	\usebeamercolor[einfragayeggplant]{title page}\usebeamerfont{title}%
+}
+{\vss\end{frame}}
+
