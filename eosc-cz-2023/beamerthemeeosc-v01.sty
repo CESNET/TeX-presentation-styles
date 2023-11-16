@@ -54,7 +54,7 @@
 		\usebeamerfont{author in head/foot}
 		{\null\insertshortdate\hfill\insertshorttitle\hfill\insertframenumber{}/\inserttotalframenumber}
 		\par
-		\vskip10pt
+		\vskip7pt
 	}
 	\hskip2em\strut
 }
@@ -66,16 +66,16 @@
 	\vbox to 53pt{
 		\vfill
 		\leavevmode
-		\raise0pt
+		\raise0pt%
 		\hbox {%
 		%\parbox[t]{.45\paperwidth}{
 			%\flushright
 			\usebeamerfont{frametitle}{%
-		\insertframetitle}
-			\usebeamerfont{framesubtitle}{\insertframesubtitle}
-		\hspace*{-1.5cm}
-	}
-	}
+		\insertframetitle}%
+			\usebeamerfont{framesubtitle}{\insertframesubtitle}%
+		\hspace*{-1.5cm}%
+	}%
+	}%
 }
 
 \setbeamersize{text margin left=.5cm,text margin right=1.5cm}
