@@ -26,12 +26,13 @@
 
 \colorlet{eoscbase}{eoscgaywarmblack}
 \colorlet{eosctitle}{eoscgaylivelygreen}
+\colorlet{eosctitleontitlepage}{white}
 
 % obrazky na pozadi
 \setbeamertemplate{background canvas}{%
 \ifnumequal{\c@framenumber}{1}{%
 % First frame
-\includegraphics[height=\paperheight]{Prezentace-titul-eosc.pdf}
+\includegraphics[height=\paperheight]{Prezentace-titul-eosc-eng.pdf}
 }{%
 \includegraphics[height=\paperheight]{Prezentace-empty-eosc.pdf}
 }%
@@ -98,7 +99,7 @@
 \setbeamerfont{frametitle}{series=\bfseries,size=\Large}
 
 %barvicky
-\setbeamercolor{title page}{fg=eosctitle}
+\setbeamercolor{title page}{fg=eosctitleontitlepage}
 \setbeamercolor{frametitle}{fg=eosctitle}
 
 \setbeamercolor{alerted text}{fg=eosctitle}
@@ -157,11 +158,11 @@
 
 \newenvironment{lastframe}
 {\setbeamertemplate{background canvas}%
-{\includegraphics[height=\paperheight]{Prezentace-empty-eosc.pdf}}%
+{\includegraphics[height=\paperheight]{Prezentace-final-eosc-eng.pdf}}%
 \setbeamertemplate{footline}{}%
 \begin{frame}
   \kern-3\baselineskip
-	\usebeamercolor[eoscgaylivelygreen]{title page}\usebeamerfont{title}%
+	\usebeamercolor[eosctitleontitlepage]{title page}\usebeamerfont{title}%
 }
 {\vss\end{frame}}
 
