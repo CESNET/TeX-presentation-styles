@@ -1,5 +1,6 @@
-\ProvidesPackage{beamerthemeeinfra-v03}
-% s logoline msmt (verze 1 ma jinou titulku)
+% This style is the "initiative" with no relation to a specific project
+\ProvidesPackage{beamerthemeeosc-v01}
+
 
 \ProcessOptionsBeamer
 %%\usepackage{environ}
@@ -32,7 +33,7 @@
 \setbeamertemplate{background canvas}{%
 \ifnumequal{\c@framenumber}{1}{%
 % First frame
-\includegraphics[height=\paperheight]{Prezentace-titul-eosc-eng.pdf}
+\includegraphics[height=\paperheight]{Prezentace-titul-eosc.pdf}
 }{%
 \includegraphics[height=\paperheight]{Prezentace-empty-eosc.pdf}
 }%
@@ -158,7 +159,7 @@
 
 \newenvironment{lastframe}
 {\setbeamertemplate{background canvas}%
-{\includegraphics[height=\paperheight]{Prezentace-final-eosc-eng.pdf}}%
+{\includegraphics[height=\paperheight]{Prezentace-final-eosc.pdf}}%
 \setbeamertemplate{footline}{}%
 \begin{frame}
   \kern-3\baselineskip
