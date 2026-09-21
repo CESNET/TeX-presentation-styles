@@ -1,0 +1,136 @@
+\ProvidesPackage{beamerthemecesnet-v01}
+% s logoline msmt (verze 1 ma jinou titulku)
+
+\ProcessOptionsBeamer
+
+\usepackage{tikz}
+
+\definecolor{cesblue}{HTML}{0068A2}
+\definecolor{cesdgray}{HTML}{5A5A5A}
+\definecolor{ceslgray}{HTML}{AAAAAA}
+\definecolor{cesfreshblue}{HTML}{00A1DE}
+\definecolor{cesruby}{HTML}{A70057}
+\definecolor{cesred}{HTML}{6E0000}
+\definecolor{cesorange}{HTML}{F27930}
+\definecolor{cesyellow}{HTML}{FBB731}
+\definecolor{cesgreen}{HTML}{008547}
+\definecolor{cespetrol}{HTML}{008185}
+
+\mode<presentation>
+{
+  \usetheme{default}
+  \usecolortheme{default}
+  \usecolortheme[named=cesblue]{structure} 
+  \usefonttheme{default}
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+  %\setbeamertemplate{footline}[frame number]  % or "page number"
+  \setbeamercolor{frametitle}{fg=cesblue}
+  \setbeamercolor{footline}{fg=black}
+} 
+
+\logo{%
+  \only<notitle>{%
+    \includegraphics[height=0.8cm]{cesnet_logo.pdf}%
+  }%
+}
+
+% --- definujeme novou variantu title page ---
+\defbeamertemplate*{title page}{myleft}{%
+  \vbox{}
+  \vfill
+  \begingroup
+    \raggedright
+    \usebeamertemplate{titlegraphic}
+    \vskip2em
+    {\usebeamerfont{title}\color{cesblue}\inserttitle\par}
+    \vskip0.5em
+    {\usebeamerfont{author}\insertauthor\par}
+    \vskip0.5em
+    {\usebeamerfont{institute}\insertinstitute\par}
+    \vskip0.5em
+    {\usebeamerfont{date}\insertdate\par}
+  \endgroup
+  \vfill
+}
+
+\titlegraphic{\includegraphics[width=3cm]{cesnet_logo.pdf}}
+
+\setbeamertemplate{headline}{%
+  \ifbeamer@plainframe\relax
+  \else
+    \leavevmode%
+    \hbox{%
+      \begin{tikzpicture}[remember picture,overlay]
+        \ifnum\insertframenumber>1
+          \node[anchor=north east, xshift=-0.3cm, yshift=-0.3cm]
+            at (current page.north east)
+            {\includegraphics[height=0.8cm]{cesnet_logo.pdf}};
+        \fi
+      \end{tikzpicture}
+    }
+  \fi
+}
+
+\setbeamertemplate{frametitle}{%
+  \vskip0.5cm % mezera od headline (logo) k titulku
+  \nointerlineskip
+  \begin{beamercolorbox}[sep=0.3cm,wd=\paperwidth]{frametitle}%
+    \usebeamerfont{frametitle}\insertframetitle%
+  \end{beamercolorbox}%
+  \vskip0.1cm % <--- mezera mezi titulkem a obsahem slide
+}
+
+\setbeamercolor{block body alerted}{bg=cesred!10}
+\setbeamercolor{block title alerted}{bg=cesred!20}
+\setbeamercolor{block body}{bg=cesblue!10}
+\setbeamercolor{block title}{bg=cesblue!20}
+\setbeamercolor{block body example}{bg=cesgreen!10}
+\setbeamercolor{block title example}{bg=cesgreen!20}
+
+\setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
+
+%% ---- Named background styles ----
+%% Usage: \bgstyle{default|blue|gray|titlepage|none}
+%% Add new styles by uncommenting a line below (pattern: \cesnetbg@newname)
+\def\cesnetbg@default{footnote-bg.pdf}
+\def\cesnetbg@blue{footnote-bg-blue.pdf}
+\def\cesnetbg@gray{footnote-bg-gray.pdf}
+\def\cesnetbg@titlepage{titlepage-bg.pdf}
+\def\cesnetbg@none{}
+
+\newcommand{\bgstyle}[1]{%
+  \ifcsname cesnetbg@#1\endcsname
+    \expandafter\ifx\csname cesnetbg@#1\endcsname\@empty
+      \usebackgroundtemplate{}%
+    \else
+      \usebackgroundtemplate{%
+        \includegraphics[width=\paperwidth,height=\paperheight]%
+          {\csname cesnetbg@#1\endcsname}}%
+    \fi
+  \else
+    \PackageError{cesnetbg}{Unknown background style: #1}{}%
+  \fi
+}
+
+
+% backward compatiblity with D.A.'s macros
+\newenvironment{lastframe}{\begin{frame}}{\end{frame}}
+
+\iffalse
+% obrazky na pozadi
+\setbeamertemplate{background canvas}{%
+\ifnumequal{\c@framenumber}{1}{%
+% First frame
+\includegraphics[height=\paperheight]{Prezentace-titul-einfra2.pdf}
+}{%
+\includegraphics[height=\paperheight]{Prezentace-empty-einfra2.pdf}
+}%
+}
+
+% opicky nahore a dole na slidu
+\useoutertheme{infolines}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{navigation symbols}{}
+\fi
+
